@@ -42,8 +42,7 @@ class HomeController extends GetxController {
   }) async {
     this.isLoading(isLoading);
     try {
-      var response =
-          await _networkApis.weatherFactory.currentWeatherByCityName(city);
+      var response = await _networkApis.currentWeatherByCityName(city);
       weather.value = response;
     } catch (e) {
       log('_getData $e');

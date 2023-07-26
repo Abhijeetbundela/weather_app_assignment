@@ -29,8 +29,7 @@ class WeatherForecastController extends GetxController {
   }) async {
     this.isLoading(isLoading);
     try {
-      var data =
-          await _networkApis.weatherFactory.fiveDayForecastByCityName(city);
+      var data = await _networkApis.fiveDayForecastByCityName(city);
 
       weatherList.value = removeDuplicatesByDate(data);
 
