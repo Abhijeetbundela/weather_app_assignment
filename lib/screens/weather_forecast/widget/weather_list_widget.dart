@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:weather/weather.dart';
+import 'package:weather_app_assignment/model/weather.dart';
 import 'package:weather_app_assignment/res/strings.dart';
 
 import 'forecast_weather_item.dart';

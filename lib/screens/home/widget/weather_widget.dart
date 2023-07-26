@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:weather/weather.dart';
+import 'package:weather_app_assignment/model/weather.dart';
 
 import 'weather_item.dart';
 
 class WeatherWidget extends StatelessWidget {
   final Weather weather;
-
-  // final WeatherData weatherData;
-  // final CityData cityData;
   final String? selectedCity;
   final VoidCallback onClearTap;
   final RefreshCallback onRefresh;
@@ -15,8 +12,6 @@ class WeatherWidget extends StatelessWidget {
   const WeatherWidget({
     super.key,
     required this.weather,
-    // required this.weatherData,
-    // required this.cityData,
     required this.onClearTap,
     required this.onRefresh,
     this.selectedCity,

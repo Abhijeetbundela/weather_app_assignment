@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:weather/weather.dart';
+import 'package:weather_app_assignment/model/weather.dart';
 import 'package:weather_app_assignment/network/network_apis.dart';
 import 'package:weather_app_assignment/res/consts.dart';
 import 'package:weather_app_assignment/utils/methods.dart';
@@ -42,10 +42,10 @@ class HomeController extends GetxController {
   }) async {
     this.isLoading(isLoading);
     try {
-      var response = await _networkApis.currentWeatherByCityName(city);
-      weather.value = response;
+      weather.value = await _networkApis.currentWeatherByCityNameApi(city);
     } catch (e) {
       log('_getData $e');
+      showToast('$e');
     }
     this.isLoading(false);
   }
