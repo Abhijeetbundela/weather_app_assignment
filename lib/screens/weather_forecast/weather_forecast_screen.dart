@@ -34,7 +34,7 @@ class WeatherForecastScreen extends GetView<WeatherForecastController> {
                 onChanged: controller.onChanged,
               ),
               SizedBox(height: 16),
-              Flexible(
+              Expanded(
                 child: WeatherListWidget(
                   weatherList: controller.weatherList.value,
                 ),

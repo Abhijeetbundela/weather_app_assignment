@@ -19,7 +19,7 @@ class WeatherListWidget extends StatelessWidget {
         padding: EdgeInsets.only(
           bottom: MediaQuery.of(context).size.width / 3,
         ),
-        child: Text(Strings.noDataFound),
+        child: Center(child: Text(Strings.noDataFound)),
       );
     }
     return ListView.builder(

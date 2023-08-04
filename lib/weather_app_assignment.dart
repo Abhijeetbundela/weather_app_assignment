@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:weather_app_assignment/controller/theme_controller.dart';
 
 import 'bindings/app_bindings.dart';
 import 'res/strings.dart';
@@ -18,10 +19,11 @@ class WeatherAppAssignment extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeController = Get.put(ThemeController());
     return GetMaterialApp(
       theme: _lightTheme,
       darkTheme: _darkTheme,
-      themeMode: ThemeMode.system,
+      themeMode: themeController.getThemeMode,
       debugShowCheckedModeBanner: false,
       defaultTransition: Transition.native,
       binds: AppBindings.bindings,

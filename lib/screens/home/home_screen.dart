@@ -29,8 +29,6 @@ class HomeScreen extends GetView<HomeController> {
       ),
       body: Obx(() {
         var isLoading = controller.isLoading.value;
-        // var weatherData = controller.weatherData.value;
-        // var cityData = controller.cityData.value;
         var weather = controller.weather.value;
         if (isLoading) {
           return Center(
@@ -45,16 +43,12 @@ class HomeScreen extends GetView<HomeController> {
                 textEditingController: controller.searchEditTextController,
                 onChanged: controller.onChanged,
               ),
-              // if (weatherData != null && weather != null && cityData != null)
-              if (weather != null)
-                WeatherWidget(
-                  weather: weather,
-                  // weatherData: weatherData,
-                  // cityData: cityData,
-                  selectedCity: controller.selectedCity.value,
-                  onClearTap: controller.onClearTap,
-                  onRefresh: controller.onRefresh,
-                ),
+              WeatherWidget(
+                weather: weather,
+                selectedCity: controller.selectedCity.value,
+                onClearTap: controller.onClearTap,
+                onRefresh: controller.onRefresh,
+              ),
             ],
           ),
         );

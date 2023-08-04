@@ -29,10 +29,9 @@ class WeatherForecastController extends GetxController {
     this.isLoading(isLoading);
     try {
       weatherList.value = await _networkApis.fiveDayForecastByCityNameApi(city);
-
-      log('message ${weatherList.value.length}');
     } catch (e) {
       log('_getData $e');
+      showToast('$e');
     }
     this.isLoading(false);
   }

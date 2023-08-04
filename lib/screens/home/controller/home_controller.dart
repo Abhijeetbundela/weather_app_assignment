@@ -2,17 +2,18 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:weather_app_assignment/controller/theme_controller.dart';
 import 'package:weather_app_assignment/model/weather.dart';
 import 'package:weather_app_assignment/network/network_apis.dart';
 import 'package:weather_app_assignment/res/consts.dart';
 import 'package:weather_app_assignment/utils/methods.dart';
-import 'package:weather_app_assignment/utils/preferences_management.dart';
 
 class HomeController extends GetxController {
   var isLoading = true.obs;
   var isDarkTheme = false.obs;
 
   final _networkApis = Get.find<NetworkApis>();
+  final _themeController = Get.find<ThemeController>();
 
   var searchEditTextController = TextEditingController();
 
@@ -23,8 +24,7 @@ class HomeController extends GetxController {
   void onReady() {
     super.onReady();
 
-    isDarkTheme.value = PreferencesManagement.getBool(key: PMKeys.isDarkTheme);
-    Get.changeThemeMode(isDarkTheme.value ? ThemeMode.dark : ThemeMode.light);
+    isDarkTheme.value = _themeController.isDarkTheme;
 
     _getData(defaultCity);
   }
@@ -61,9 +61,8 @@ class HomeController extends GetxController {
   }
 
   void onThemeChanged(bool value) {
-    isDarkTheme.value = value;
-    Get.changeThemeMode(value ? ThemeMode.dark : ThemeMode.light);
-    PreferencesManagement.saveBool(key: PMKeys.isDarkTheme, value: value);
+    _themeController.changeTheme(value);
+    isDarkTheme.value = _themeController.isDarkTheme;
   }
 
   void onClearTap() {

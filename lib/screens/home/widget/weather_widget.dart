@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:weather_app_assignment/model/weather.dart';
+import 'package:weather_app_assignment/res/strings.dart';
 
 import 'weather_item.dart';
 
 class WeatherWidget extends StatelessWidget {
-  final Weather weather;
+  final Weather? weather;
   final String? selectedCity;
   final VoidCallback onClearTap;
   final RefreshCallback onRefresh;
@@ -24,11 +25,18 @@ class WeatherWidget extends StatelessWidget {
         onRefresh: onRefresh,
         child: ListView(
           children: [
-            WeatherItem(
-              weather: weather,
-              onClearTap: onClearTap,
-              selectedCity: selectedCity,
-            ),
+            weather != null
+                ? WeatherItem(
+                    weather: weather!,
+                    onClearTap: onClearTap,
+                    selectedCity: selectedCity,
+                  )
+                : Padding(
+                    padding: EdgeInsets.only(
+                      top: MediaQuery.of(context).size.height / 3,
+                    ),
+                    child: Center(child: Text(Strings.noDataFound)),
+                  ),
           ],
         ),
       ),
